@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b0abc7ba34vc0"]
+
+[ext_resource type="Texture2D" uid="uid://cgvhlgia6a7m7" path="res://Resources/Texture/checked.svg" id="1"]
+[ext_resource type="Texture2D" uid="uid://b6vyhw26mbn6d" path="res://Resources/Texture/unchecked.svg" id="2"]
+[ext_resource type="FontFile" uid="uid://sv017n7r0wpc" path="res://Resources/fonts/Montserrat-Medium.ttf" id="3"]
+[ext_resource type="Texture2D" uid="uid://of7bs4mdrhcy" path="res://Resources/Texture/checked_disabled.svg" id="4"]
+[ext_resource type="Texture2D" uid="uid://i4tinsyl6eww" path="res://Resources/Texture/unchecked_disabled.svg" id="5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_byxdi"]
+
+[resource]
+default_font = ExtResource("3")
+default_font_size = 50
+Button/colors/icon_normal_color = Color(0.313726, 0.313726, 0.313726, 0.772549)
+Button/styles/focus = SubResource("StyleBoxEmpty_byxdi")
+CheckBox/constants/h_separation = 60
+CheckBox/fonts/font = ExtResource("3")
+CheckBox/icons/checked = ExtResource("1")
+CheckBox/icons/checked_disabled = ExtResource("4")
+CheckBox/icons/unchecked = ExtResource("2")
+CheckBox/icons/unchecked_disabled = ExtResource("5")

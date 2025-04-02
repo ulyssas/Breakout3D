@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="78.590988mm"
+   height="78.451607mm"
+   viewBox="0 0 78.590988 78.451607"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="Checker_unchecked.svg"
+   inkscape:version="1.2 (dc2aeda, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.7490924"
+     inkscape:cx="121.49158"
+     inkscape:cy="119.20468"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter10531"
+       x="-0.038923583"
+       y="-0.038923583"
+       width="1.0778472"
+       height="1.0778472">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.2725056"
+         id="feGaussianBlur10533" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-30.185245,-91.692609)">
+    <rect
+       style="mix-blend-mode:normal;fill:#3a3a43;fill-opacity:1;fill-rule:evenodd;stroke:#2b2a32;stroke-width:4.2;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;filter:url(#filter10531)"
+       id="rect67"
+       width="70.754364"
+       height="70.754364"
+       x="32.939259"
+       y="96.635834"
+       ry="15.109029" />
+  </g>
+</svg>

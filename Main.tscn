@@ -1,0 +1,270 @@
+[gd_scene load_steps=21 format=3 uid="uid://b7onbol6k6arq"]
+
+[ext_resource type="PackedScene" uid="uid://bexivia58rdh2" path="res://Main/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://d35dgdbeyecg2" path="res://Main/Ball.tscn" id="2"]
+[ext_resource type="Material" uid="uid://bdm67uye16hvm" path="res://Resources/Material/KabeMat.tres" id="3"]
+[ext_resource type="Script" uid="uid://dsvlddpo7gtl0" path="res://Main.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://ctoelm7fua7aa" path="res://Main/Box.tscn" id="5"]
+[ext_resource type="Script" uid="uid://bk5pnslvjdbp4" path="res://KabeZ2.gd" id="6"]
+[ext_resource type="FontFile" uid="uid://sv017n7r0wpc" path="res://Resources/fonts/Montserrat-Medium.ttf" id="7"]
+[ext_resource type="Environment" uid="uid://c6gksqypptad6" path="res://OURWORLD.tres" id="8"]
+[ext_resource type="Theme" uid="uid://blt2f1sqyuyjm" path="res://Resources/Themes/LogMain.tres" id="9"]
+[ext_resource type="Script" uid="uid://bxjd5hrt0njjt" path="res://FPSCount.gd" id="10_pdn55"]
+
+[sub_resource type="Animation" id="11"]
+resource_name = "Fading"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OurWorld:environment:glow_bloom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.37]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OurWorld:environment:glow_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.34]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hako/KabeX1/MeshInstance:mesh:material:emission_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.29]
+}
+
+[sub_resource type="Animation" id="12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OurWorld:environment:glow_bloom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.45]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OurWorld:environment:glow_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hako/KabeX1/MeshInstance:mesh:material:emission_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [12.29]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sbon3"]
+_data = {
+&"Fading": SubResource("11"),
+&"RESET": SubResource("12")
+}
+
+[sub_resource type="StandardMaterial3D" id="5"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.16
+metallic_specular = 0.74
+roughness = 0.03
+
+[sub_resource type="BoxMesh" id="1"]
+material = SubResource("5")
+size = Vector3(15, 0.2, 10)
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(15, 0.2, 10)
+
+[sub_resource type="BoxMesh" id="3"]
+material = ExtResource("3")
+size = Vector3(15, 1, 0.2)
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(15, 1, 0.2)
+
+[sub_resource type="BoxMesh" id="6"]
+material = ExtResource("3")
+size = Vector3(0.2, 1, 10)
+
+[sub_resource type="BoxShape3D" id="7"]
+size = Vector3(0.2, 1, 10)
+
+[node name="Main" type="Node"]
+script = ExtResource("4")
+box_scene = ExtResource("5")
+ball_scene = ExtResource("2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sbon3")
+}
+autoplay = "Fading"
+
+[node name="OurWorld" type="WorldEnvironment" parent="."]
+environment = ExtResource("8")
+
+[node name="ElapsedTimeLabel" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 504.0
+offset_bottom = 80.0
+theme = ExtResource("9")
+text = "Elapsed Time: 2.4172+e14"
+
+[node name="RemainBlockLabel" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 85.0
+offset_right = 334.0
+offset_bottom = 135.0
+theme = ExtResource("9")
+text = "Remaining: 580"
+
+[node name="LifeLabel" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 140.0
+offset_right = 144.0
+offset_bottom = 190.0
+theme = ExtResource("9")
+text = "Life: 0"
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 12.93, 0)
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 33.9455, 0)
+visible = false
+light_energy = 2.248
+light_indirect_energy = 1.147
+shadow_enabled = true
+
+[node name="OmniLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+visible = false
+omni_range = 14.208
+
+[node name="Hako" type="Node3D" parent="."]
+
+[node name="Yuka" type="StaticBody3D" parent="Hako"]
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Hako/Yuka"]
+mesh = SubResource("1")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hako/Yuka"]
+shape = SubResource("2")
+
+[node name="KabeX1" type="StaticBody3D" parent="Hako"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Hako/KabeX1"]
+mesh = SubResource("3")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hako/KabeX1"]
+shape = SubResource("4")
+
+[node name="KabeX2" type="StaticBody3D" parent="Hako"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Hako/KabeX2"]
+mesh = SubResource("3")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hako/KabeX2"]
+shape = SubResource("4")
+
+[node name="KabeZ1" type="StaticBody3D" parent="Hako"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, 0)
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Hako/KabeZ1"]
+mesh = SubResource("6")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hako/KabeZ1"]
+shape = SubResource("7")
+
+[node name="KabeZ2" type="StaticBody3D" parent="Hako"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.5, 0)
+script = ExtResource("6")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Hako/KabeZ2"]
+mesh = SubResource("6")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hako/KabeZ2"]
+shape = SubResource("7")
+
+[node name="Ball" parent="." instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55, 0.4, 0)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+collision_mask = 3
+
+[node name="Count" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -154.0
+offset_right = 71.5
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.34902)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 250
+text = "3"
+
+[node name="FPSCount" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -72.0
+offset_right = 163.0
+offset_bottom = -22.0
+grow_vertical = 0
+theme = ExtResource("9")
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+text = "FPS: 60"
+script = ExtResource("10_pdn55")
+
+[connection signal="ball_reload" from="." to="Ball" method="_on_Main_ball_reload"]
+[connection signal="begin" from="." to="." method="_on_Main_begin"]
+[connection signal="begin" from="." to="Ball" method="_on_Main_begin"]
+[connection signal="over" from="." to="Ball" method="_on_Main_over"]
+[connection signal="hit_box" from="Ball" to="." method="_on_Ball_hit_box"]
+[connection signal="hit_ground" from="Ball" to="." method="_on_Ball_hit_ground"]

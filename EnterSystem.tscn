@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://drfadk3uchvj4"]
+
+[ext_resource type="Theme" uid="uid://cdcpgoqljsocp" path="res://Resources/Themes/TitleTxt.tres" id="1"]
+[ext_resource type="Theme" uid="uid://qs3vpxfk5tnw" path="res://Resources/Themes/UpDown.tres" id="2"]
+[ext_resource type="Script" uid="uid://oiqerepm7c4d" path="res://EnterSystem.gd" id="3"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_ravnl"]
+action = &"move_forward"
+
+[sub_resource type="Shortcut" id="Shortcut_2d4r1"]
+events = [SubResource("InputEventAction_ravnl")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_55fhy"]
+action = &"move_back"
+
+[sub_resource type="Shortcut" id="6"]
+events = [SubResource("InputEventAction_55fhy")]
+
+[node name="EnterSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("3")
+
+[node name="LabelNumBlock" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 70.0
+offset_right = 138.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+text = "12"
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonUp" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 139.0
+offset_bottom = 70.0
+theme = ExtResource("2")
+keep_pressed_outside = true
+shortcut = SubResource("Shortcut_2d4r1")
+shortcut_in_tooltip = false
+text = "▲"
+metadata/_edit_layout_mode = 1
+
+[node name="ButtonDown" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 228.0
+offset_right = 139.0
+offset_bottom = 297.0
+theme = ExtResource("2")
+keep_pressed_outside = true
+shortcut = SubResource("6")
+shortcut_in_tooltip = false
+text = "▼"
+metadata/_edit_layout_mode = 1
+
+[connection signal="pressed" from="ButtonUp" to="." method="_on_ButtonUp_pressed"]
+[connection signal="pressed" from="ButtonDown" to="." method="_on_ButtonDown_pressed"]

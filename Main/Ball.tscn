@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://d35dgdbeyecg2"]
+
+[ext_resource type="Material" uid="uid://b35blcan8ef0e" path="res://Resources/Material/BallMat.tres" id="1"]
+[ext_resource type="Script" uid="uid://cllh8rs31xxc" path="res://Main/Ball.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://ckgb6fpi2udnq" path="res://Main/Arrow.tscn" id="3"]
+
+[sub_resource type="SphereMesh" id="1"]
+material = ExtResource("1")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="2"]
+radius = 0.2
+
+[node name="Ball" type="CharacterBody3D"]
+transform = Transform3D(0.827277, 0, -0.561795, 0, 1, 0, 0.561795, 0, 0.827277, -5.55, 0.4, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+mesh = SubResource("1")
+skeleton = NodePath("")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("2")
+
+[node name="Arrow" parent="." instance=ExtResource("3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.39779)
